@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library</title>
+    <link href="styles.css" rel="stylesheet">
+    <script defer src="javascript.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">My Library</h1>
+        <div class="storage">
+            <div class="book">
+                <div class="title">this is a title</div>
+                <div class="author">author name</div>
+                <div class="numOfPages">250</div>
+                <div class="id">1234567890</div>
+                 <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                 </label>
+                 <div id="delete-button">
+                    <button type="button">Delete</button>
+                 </div>
+            </div>
+            <dialog open>
+                <h3>Enter book info to add</h3>
+                <form method="dialog" id="myForm">
+                    <div class="input_field">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" autocomplete="off" required>
+                    </div>
+                    <div class="input_field">
+                        <label for="author">Author</label>
+                        <input type="text" id="author" autocomplete="off" required>
+                    </div>
+                    <!-- Add number only input for pages -->
+                    <div class="input_field">
+                        <label for="pages">Pages</label>
+                        <input type="text" id="pages" autocomplete="off" required>
+                    </div>
+                    <div>
+                        <p>Read Status</p>
+                        <select name="read" id="selector">
+                            <option value="read" selected>Read</option>
+                            <option value="not-read">Not Read</option>
+                        </select>
+                    </div>
+                    <div class="button-holder">
+                        <button id="add">Add</button>
+                    </div>
+                </form>
+            </dialog>
+        </div>
+    </div>
+</body>
+</html>

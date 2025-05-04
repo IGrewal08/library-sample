@@ -6,10 +6,6 @@ const myLibrary = [];
 const dialog = document.querySelector("dialog");
 const addButton = document.querySelector('#add');
 
-
-
-
-
 addButton.addEventListener('click', (event) => {
 
     let selected = document.getElementById('selector');
@@ -52,7 +48,7 @@ function createCard() {
             statusButton.textContent = Book.read;
 
             statusButton.addEventListener("click", (e) => {
-                changeReadStatus(Book);
+                Book.read = Book.read === 'Read'? "Not Read" : "Read";
                 statusButton.textContent = Book.read;
                 if (Book.read === 'Read') {
                     newCard.style.backgroundColor = 'green';
@@ -104,19 +100,22 @@ function createCard() {
     });
 }
 
-function Book(title, author, numOfPages, read) {
-    this.title = title;
-    this.author = author;
-    this.numOfPages = numOfPages;
-    this.id = crypto.randomUUID();
-    this.read = read;
-    this.info = function () {
+class Book {
+    constructor(title, author, numOfPages, read) {
+        this.title = title;
+        this.author = author;
+        this.numOfPages = numOfPages;
+        this.id = crypto.randomUUID();
+        this.read = read;
+    }
+
+    get info() {
         return (this.title + ' ' 
             + this.author + ' ' 
             + this.numOfPages + ' ' 
             + this.id + ' ' 
             + this.read);
-    };
+    }
 }
 
 function addBookToLibrary(title, author, numOfPages, read) {
@@ -124,12 +123,3 @@ function addBookToLibrary(title, author, numOfPages, read) {
     myLibrary.push(newBook);
     createCard();
 }
-
-function changeReadStatus(Book) {
-    if (Book.read === 'Read') {
-        Book.read = 'Not Read';
-    } else if (Book.read === 'Not Read') {
-        Book.read = 'Read';
-    }
-}
-
